@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import axios from 'axios';
 import styled from 'styled-components';
 
 // styled-components sample
@@ -18,6 +19,15 @@ const Logo = styled.img`
 
 function App() {
   const [count, setCount] = useState(0);
+  const requestTest = () => {
+    axios.get("http://localhost:3000/api/user")
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  }
 
   return (
     <div className="App">
@@ -31,8 +41,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={requestTest}>
+          request!
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
