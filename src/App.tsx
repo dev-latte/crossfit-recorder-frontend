@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 import axios from 'axios';
 import styled from 'styled-components';
+import Login from './pages/Login';
 
 // styled-components sample
 const Logo = styled.img`
@@ -18,7 +19,6 @@ const Logo = styled.img`
 `;
 
 function App() {
-  const [count, setCount] = useState(0);
   const requestTest = () => {
     axios.get("http://localhost:3000/api/user")
     .then(response => {
@@ -31,7 +31,8 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <Login></Login>
+      {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <Logo src="/vite.svg" alt="Vite logo" />
         </a>
@@ -50,7 +51,7 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
     </div>
   )
 }
