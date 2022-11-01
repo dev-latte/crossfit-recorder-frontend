@@ -1,21 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import axios from 'axios';
 import styled from 'styled-components';
 import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 // styled-components sample
-const Logo = styled.img`
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  &:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  &.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
-  }
+const Background = styled.div`
+    background: #343343; 
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+    color: #BBB9CE;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const Container = styled.div`
+  max-width: 414px;
+  width: 100vw;
+  max-height: 896px;
+  height: 90vh;
+  border: 1px solid #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px 0;
 `;
 
 function App() {
@@ -30,8 +41,11 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Login></Login>
+    <Background>
+      <Container>
+        <Login></Login>
+        {/* <SignUp></SignUp> */}
+      </Container>
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <Logo src="/vite.svg" alt="Vite logo" />
@@ -52,7 +66,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-    </div>
+    </Background>
   )
 }
 
