@@ -3,6 +3,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import { useState } from 'react';
+import { Sign } from 'crypto';
 
 // styled-components sample
 const Background = styled.div`
@@ -43,8 +45,8 @@ function App() {
   return (
     <Background>
       <Container>
-        <Login></Login>
-        {/* <SignUp></SignUp> */}
+        {/* <Login/> */}
+        <SignUp/>
       </Container>
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
