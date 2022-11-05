@@ -23,7 +23,7 @@ export const TitleForm = ({ title, description}: Props) => {
     return (
         <StyledTitleForm>
             <h1>{title}</h1>
-            { description && description.map((el) => <p>{el}</p>) }
+            { description && description.map((el, index) => <p key={index}>{el}</p>) }
         </StyledTitleForm>
 
     );

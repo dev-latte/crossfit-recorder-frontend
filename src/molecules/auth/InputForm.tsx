@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { IconLabel } from "../../atoms/auth/IconLabel";
 import { Input } from "../../atoms/auth/Input";
+import { emailValidation } from "../../util/validation";
 
 const InputWrap = styled.div`
     display: flex;
@@ -26,12 +27,27 @@ interface Props {
     readonly id?: string;
     readonly name?: string;
     readonly placeholder?: string;
+    warning: object;
+    setWarning: Function;
 }
 
-export const InputForm = ({ value, setValue, htmlFor, icon, type, id, name, placeholder } : Props) => {
+export const InputForm = ({ value, setValue, htmlFor, icon, type, id, name, placeholder, warning, setWarning } : Props) => {
+    const emailWarning = (email: string) => {
+        if(email === "") { 
+            setWarning({email: true});
+            return;
+        } 
+
+        setWarning(emailValidation(email));
+    }
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const targetName = event.target.name;
+        const targetValue = event.target.value;
+
+        if(targetName === "email") emailWarning(targetValue);
         const copy = Object.assign(value);
-        copy[event.target.name] = event.target.value;
+        copy[targetName] = targetValue;
         setValue(copy);
     }
 

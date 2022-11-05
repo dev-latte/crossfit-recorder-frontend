@@ -22,12 +22,13 @@ const Background = styled.div`
 
 const SignUp = () => {
     const [value, setValue] = useState({email: "", password: "", name: "", confirmPassword: ""});
+    const [warning, setWarning] = useState({ email: false, password: false })
 
     return (
         <Background>
         <AuthCard>
             <TitleForm title="Create Account" description={["Please fill the input below here"]} />
-            <FormContainer value={value} setValue={setValue} label="Sign Up">
+            <FormContainer value={value} setValue={setValue} label="Sign Up" warning={warning}>
                 <InputForm value={value} setValue={setValue} htmlFor="email" icon={<AiOutlineMail/>} type="text" id="email" name="email" placeholder="이메일 주소" />                
                 <InputForm value={value} setValue={setValue} htmlFor="name" icon={<AiOutlineUser/>} type="text" id="name" name="name" placeholder="이름" />
                 <InputForm value={value} setValue={setValue} htmlFor="password" icon={<AiOutlineLock/>} type="password" id="password" name="password" placeholder="비밀번호" />

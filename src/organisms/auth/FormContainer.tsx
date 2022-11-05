@@ -16,12 +16,13 @@ interface Props {
     label?: string;
     value: object;
     setValue: Function;
+    warning: object;
     children: React.ReactNode;
 }
 
-export const FormContainer = ({ label, children }: Props) => {
+export const FormContainer = ({ value, setValue, label, warning, children }: Props) => {
     const handleSubmit = (event: React.FormEvent) => {
-        console.log("submit");
+        console.log(value);
         event.preventDefault();
     }
 
@@ -29,7 +30,7 @@ export const FormContainer = ({ label, children }: Props) => {
         <StyledForm onSubmit={handleSubmit}>
             <Image src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Web site Logo" />
             {children}
-            <Button type="submit" label={label}/>
+            <Button type="submit" label={label} disabled={!warning}/>
         </StyledForm>
     );   
 }

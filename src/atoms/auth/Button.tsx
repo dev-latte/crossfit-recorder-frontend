@@ -13,15 +13,20 @@ const StyledButton = styled.button`
         color: #fff;
         transition: .5s;
     }
+    &:disabled {
+        background: #777;
+        color:#ccc;
+    }
 `;
 
 interface Props {
     readonly type?: any;
     readonly label?: string;
+    readonly disabled?: boolean;
 }
 
-export const Button = ({ type, label }: Props) => {
+export const Button = ({ type, label, disabled }: Props) => {
     return (
-        <StyledButton type={type}>{label}</StyledButton>
+        <StyledButton type={type} disabled={disabled}>{label}</StyledButton>
     );
 }
