@@ -7,7 +7,6 @@ import { AiOutlineLock, AiOutlineMail } from "react-icons/ai";
 import { TitleForm } from "../molecules/auth/TitleForm";
 import { AuthCard } from "../templates/auth/AuthCard";
 import styled from "styled-components";
-import { ToolTip } from "../atoms/auth/ToolTip";
 
 const Background = styled.div`
     background: #343343; 
@@ -24,16 +23,15 @@ const Background = styled.div`
 const Login = () => {
     const [value, setValue] = useState({email: "", password: ""});
     const [warning, setWarning] = useState({email: false});
+    const [disabled, setDisabled] = useState(true);
 
     return (
         <Background>
         <AuthCard>
             <TitleForm title="Login" description={["Please fill the input below here"]} />
-            <FormContainer value={value} setValue={setValue} label="Log in" warning={warning}>
-                <InputForm value={value} setValue={setValue} htmlFor="email" icon={<AiOutlineMail/>} type="text" id="email" name="email" placeholder="이메일 주소" warning={warning} setWarning={setWarning} />
-                { !warning && <ToolTip text={"이메일 형식을 확인해주세요."} top={0} left={0}/> }
-
-                <InputForm value={value} setValue={setValue} htmlFor="password" icon={<AiOutlineLock/>} type="password" id="password" name="password" placeholder="비밀번호" warning={warning} setWarning={() => {}}/>
+            <FormContainer value={value} setValue={setValue} label="Log in" warning={warning} disabled={disabled}>
+                <InputForm value={value} setValue={setValue} htmlFor="email" icon={<AiOutlineMail/>} type="text" id="email" name="email" placeholder="이메일 주소" setWarning={setWarning} setDisabled={setDisabled}/>
+                <InputForm value={value} setValue={setValue} htmlFor="password" icon={<AiOutlineLock/>} type="password" id="password" name="password" placeholder="비밀번호" setWarning={() => {}} setDisabled={setDisabled}/>
             </FormContainer>
             <DescriptionForm>
                 <Link to="#"><p>Forgot your password?</p></Link>

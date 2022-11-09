@@ -7,6 +7,7 @@ import { InputForm } from "../molecules/auth/InputForm";
 import { TitleForm } from "../molecules/auth/TitleForm";
 import { AuthCard } from "../templates/auth/AuthCard";
 import styled from "styled-components";
+import { ToolTip } from "../atoms/auth/ToolTip";
 
 const Background = styled.div`
     background: #343343; 
@@ -29,10 +30,10 @@ const SignUp = () => {
         <AuthCard>
             <TitleForm title="Create Account" description={["Please fill the input below here"]} />
             <FormContainer value={value} setValue={setValue} label="Sign Up" warning={warning}>
-                <InputForm value={value} setValue={setValue} htmlFor="email" icon={<AiOutlineMail/>} type="text" id="email" name="email" placeholder="이메일 주소" />                
-                <InputForm value={value} setValue={setValue} htmlFor="name" icon={<AiOutlineUser/>} type="text" id="name" name="name" placeholder="이름" />
-                <InputForm value={value} setValue={setValue} htmlFor="password" icon={<AiOutlineLock/>} type="password" id="password" name="password" placeholder="비밀번호" />
-                <InputForm value={value} setValue={setValue} htmlFor="confirm-password" icon={<AiFillLock/>} type="password" id="confirm-password" name="confirmPassword"  placeholder="비밀번호 확인" />
+                <InputForm value={value} setValue={setValue} htmlFor="email" icon={<AiOutlineMail/>} type="text" id="email" name="email" placeholder="이메일 주소" setWarning={setWarning}/>
+                <InputForm value={value} setValue={setValue} htmlFor="name" icon={<AiOutlineUser/>} type="text" id="name" name="name" placeholder="이름" setWarning={() => {}} />
+                <InputForm value={value} setValue={setValue} htmlFor="password" icon={<AiOutlineLock/>} type="password" id="password" name="password" placeholder="비밀번호" setWarning={() => {}} />
+                <InputForm value={value} setValue={setValue} htmlFor="confirm-password" icon={<AiFillLock/>} type="password" id="confirm-password" name="confirmPassword"  placeholder="비밀번호 확인" setWarning={() => {}}/>
             </FormContainer>
             <DescriptionForm>
                 <p>Already Have a account? <Link to="/">Sign in</Link></p>

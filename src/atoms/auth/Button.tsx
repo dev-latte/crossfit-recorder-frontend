@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const StyledButton = styled.button`
+const StyledButton = styled.button< {margin : string} >`
     background: #2F2C3C;
     color: #BBB9CE;
     border: none;
     width: 300px;
     height: 50px;
-    margin-top: 50px;
+    margin: ${(props) => props.margin || "0px"};
     cursor: pointer;
     &:hover{
         background: #E16B76;
@@ -23,10 +23,11 @@ interface Props {
     readonly type?: any;
     readonly label?: string;
     readonly disabled?: boolean;
+    readonly margin: string;
 }
 
-export const Button = ({ type, label, disabled }: Props) => {
+export const Button = ({ type, label, disabled, margin }: Props) => {
     return (
-        <StyledButton type={type} disabled={disabled}>{label}</StyledButton>
+        <StyledButton type={type} disabled={disabled} margin={margin}>{label}</StyledButton>
     );
 }

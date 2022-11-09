@@ -27,24 +27,29 @@ interface Props {
     readonly id?: string;
     readonly name?: string;
     readonly placeholder?: string;
-    warning: object;
     setWarning: Function;
+    setDisabled: Function;
 }
 
-export const InputForm = ({ value, setValue, htmlFor, icon, type, id, name, placeholder, warning, setWarning } : Props) => {
+export const InputForm = ({ value, setValue, htmlFor, icon, type, id, name, placeholder, setWarning, setDisabled } : Props) => {
     const emailWarning = (email: string) => {
         if(email === "") { 
             setWarning({email: true});
             return;
         } 
-
         setWarning(emailValidation(email));
     }
 
+    // 여기서...
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const targetName = event.target.name;
         const targetValue = event.target.value;
 
+        if(targetValue === "") { 
+            setDisabled(true); 
+        } else {
+            setDisabled(false);
+        }
         if(targetName === "email") emailWarning(targetValue);
         const copy = Object.assign(value);
         copy[targetName] = targetValue;
