@@ -1,18 +1,16 @@
 import styled from "styled-components";
 
 const WarningTextStyled = styled.p`
-    font-size: 13px;
-    color: #E16B76;
-    padding: 15px 0;
-    height: 54px;
+  font-size: 13px;
+  color: #e16b76;
+  padding: 5px 0;
+  height: 34px;
 `;
 
 interface Props {
-    text: string;
+  text: string;
 }
 
-export const Warning = ({ text } : Props) => {
-    return (
-        <WarningTextStyled>{text}</WarningTextStyled>
-    );
-}
+export const Warning = ({ text }: Props) => {
+  return <WarningTextStyled>{text}</WarningTextStyled>;
+};
